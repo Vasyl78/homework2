@@ -6,27 +6,29 @@ module StateAndBehaviour
   class Car
     attr_accessor :color, :year, :model, :current_speed
 
+    START_SPEED = 0
+    DEFAULT_COLOR = 'red'
+    DEFAULT_MODEL = 'Chargo'
+    DEFAULT_YEAR = 1981
+
     def initialize(params)
-      @color = params[:color] || 'red'
-      @model = params[:model] || 'Chargo'
-      @year = params[:year] || 1981
-      @current_speed = 0
+      @color = params[:color] || DEFAULT_COLOR
+      @model = params[:model] || DEFAULT_MODEL
+      @year = params[:year] || DEFAULT_YEAR
+      @current_speed = START_SPEED
     end
 
     def self.default_car
       Car.new
     end
 
-    def speed_up(speed)
-      @current_speed += speed
+    def speed_up(more_speed)
+      @current_speed += more_speed
     end
 
-    def push_break(speed)
-      if speed <= @current_speed
-        @current_speed -= speed
-      else
-        @current_speed
-      end
+    def push_break(less_speed)
+      @current_speed
+      less_speed <= @current_speed ? @current_speed -= less_speed 
     end
   end
 end
