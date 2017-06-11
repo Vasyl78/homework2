@@ -27,8 +27,7 @@ module StateAndBehaviour
     end
 
     def push_break(less_speed)
-      @current_speed
-      less_speed <= @current_speed ? @current_speed -= less_speed 
+      @current_speed -= less_speed if less_speed <= @current_speed
     end
   end
 end
